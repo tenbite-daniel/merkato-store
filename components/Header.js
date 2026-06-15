@@ -404,6 +404,14 @@ export function Header() {
       </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+
+      {/* ── Promo announcement banner ── */}
+      <div className="w-full bg-[#8B2500] text-white text-sm text-center py-2.5 px-4">
+        🎉 Huge Holiday Sale: Up to 50% off!{' '}
+        <Link href="/deals" className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity">
+          Shop Now
+        </Link>
+      </div>
     </>
   );
 }
