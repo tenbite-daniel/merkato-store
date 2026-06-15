@@ -68,8 +68,6 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  [dir="rtl"] html,
-  [dir="rtl"] body,
   html[dir="rtl"],
   html[dir="rtl"] body {
     font-family: var(--font-arabic), var(--font-sans);
