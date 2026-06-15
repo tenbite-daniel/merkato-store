@@ -31,12 +31,19 @@
     "accessories": ["المجوهرات", "المحافظ", "القبعات وأكثر"]
   },
   "categories": {
+    "shopByCategory": "تسوق حسب الفئة",
     "electronics": "الإلكترونيات",
-    "fashion": "الموضة",
+    "fashion": "الموضة والملابس",
     "groceries": "البقالة",
-    "beauty": "الجمال",
-    "household": "المنزل",
-    "accessories": "الإكسسوارات"
+    "beauty": "منتجات الجمال",
+    "household": "المستلزمات المنزلية",
+    "accessories": "الإكسسوارات",
+    "electronicsBlurb": "أحدث الأجهزة والتقنيات الأساسية.",
+    "fashionBlurb": "أسلوب التراث الحديث والملابس.",
+    "groceriesBlurb": "منتجات إقليمية طازجة، تُوصل إليك.",
+    "beautyBlurb": "عناية بالبشرة فاخرة، من مصادر طبيعية.",
+    "householdBlurb": "أساسيات مصنوعة بعناية للمنزل.",
+    "accessoriesBlurb": "مجوهرات وحقائب ومحافظ والمزيد."
   },
   "promoBanner": "🎉 تخفيضات العطلات الكبرى: خصم يصل إلى 50%!",
   "promoBannerCta": "تسوق الآن",

@@ -31,12 +31,19 @@
     "accessories": ["Jewellery", "Wallets", "Hats & More"]
   },
   "categories": {
+    "shopByCategory": "Shop by Category",
     "electronics": "Electronics",
-    "fashion": "Fashion",
+    "fashion": "Fashion & Clothing",
     "groceries": "Groceries",
-    "beauty": "Beauty",
-    "household": "Household",
-    "accessories": "Accessories"
+    "beauty": "Beauty Products",
+    "household": "Household Items",
+    "accessories": "Accessories",
+    "electronicsBlurb": "Latest gadgets & tech essentials.",
+    "fashionBlurb": "Modern heritage style & apparel.",
+    "groceriesBlurb": "Fresh regional produce, delivered.",
+    "beautyBlurb": "Premium skincare, naturally sourced.",
+    "householdBlurb": "Crafted essentials for the home.",
+    "accessoriesBlurb": "Jewellery, bags, wallets & more."
   },
   "promoBanner": "🎉 Huge Holiday Sale: Up to 50% off!",
   "promoBannerCta": "Shop Now",
