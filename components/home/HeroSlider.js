@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 
 const slideImages = [
@@ -31,13 +32,16 @@ export default function HeroSlider() {
     <section className="mx-auto max-w-[1280px] px-4 md:px-8 pt-6">
       <div className="relative overflow-hidden rounded-2xl">
         {slideImages.map((src, i) => (
-          <img
+          <Image
             key={i}
             src={src}
             alt={slides[i].highlight}
-            className={`absolute inset-0 h-[420px] md:h-[520px] w-full object-cover transition-opacity duration-700 ${
+            fill
+            className={`object-cover transition-opacity duration-700 ${
               i === current ? 'opacity-100' : 'opacity-0'
             }`}
+            sizes="100vw"
+            priority={i === 0}
           />
         ))}
 
