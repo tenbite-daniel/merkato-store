@@ -99,6 +99,32 @@
       "terms": "Terms of Service"
     }
   },
+  "products": {
+    "featured": "Featured Products",
+    "bestSellers": "Best Sellers",
+    "newArrivals": "New Arrivals",
+    "viewAll": "View All",
+    "addToCart": "Add to cart"
+  },
+  "productData": {
+    "acoustic-over-ear-headphones": "Acoustic Over-Ear Headphones",
+    "nexar-pro-x-smartphone": "Nexar Pro X — 5G Flagship Smartphone",
+    "techcorp-probook-x": "TechCorp ProBook X",
+    "heritage-leather-satchel": "Heritage Leather Satchel",
+    "athletic-running-shoes": "AeroGlide Running Shoes",
+    "ethiopian-yirgacheffe-coffee": "Ethiopian Yirgacheffe Coffee Beans",
+    "organic-dates-premium": "Premium Medjool Dates (1kg)",
+    "african-black-soap": "Raw African Black Soap Bar",
+    "shea-butter-moisturiser": "Whipped Shea Butter Moisturiser",
+    "artisanal-ceramic-vases-set": "Artisanal Ceramic Vases Set",
+    "bamboo-kitchen-set": "Bamboo Kitchen Utensil Set",
+    "leather-minimalist-wallet": "Slim Leather Minimalist Wallet",
+    "gold-statement-necklace": "Gold-Plated Statement Necklace",
+    "badges": {
+      "Best Seller": "Best Seller",
+      "New": "New"
+    }
+  },
   "hero": {
     "slides": [
       {

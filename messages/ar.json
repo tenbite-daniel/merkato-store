@@ -99,6 +99,32 @@
       "terms": "شروط الخدمة"
     }
   },
+  "products": {
+    "featured": "المنتجات المميزة",
+    "bestSellers": "الأكثر مبيعاً",
+    "newArrivals": "وصل حديثاً",
+    "viewAll": "عرض الكل",
+    "addToCart": "أضف للسلة"
+  },
+  "productData": {
+    "acoustic-over-ear-headphones": "سماعات أذن فوق الأذن",
+    "nexar-pro-x-smartphone": "نيكسار برو إكس — هاتف ذكي 5G",
+    "techcorp-probook-x": "تيك كورب بروبوك إكس",
+    "heritage-leather-satchel": "حقيبة الجلد التراثية",
+    "athletic-running-shoes": "حذاء إيروغلايد للجري",
+    "ethiopian-yirgacheffe-coffee": "قهوة يرغاشيفي الإثيوبية",
+    "organic-dates-premium": "تمر مجدول فاخر (1 كغ)",
+    "african-black-soap": "صابون أفريقي أسود طبيعي",
+    "shea-butter-moisturiser": "مرطب زبدة الشيا المخفوقة",
+    "artisanal-ceramic-vases-set": "طقم مزهريات سيراميك يدوية",
+    "bamboo-kitchen-set": "طقم أدوات مطبخ من الخيزران",
+    "leather-minimalist-wallet": "محفظة جلدية نحيفة",
+    "gold-statement-necklace": "قلادة ذهبية مطلية فاخرة",
+    "badges": {
+      "Best Seller": "الأكثر مبيعاً",
+      "New": "جديد"
+    }
+  },
   "hero": {
     "slides": [
       {
