@@ -113,8 +113,17 @@ export function Header() {
     router.push(segments.join('/') || '/');
   };
 
+  const [megaAlign, setMegaAlign] = useState({});
+  const categoryRefs = useRef({});
+
   const openMega = (slug) => {
     if (megaTimer.current) clearTimeout(megaTimer.current);
+    const el = categoryRefs.current[slug];
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      // If the popup (520px wide) would overflow the viewport, align right
+      setMegaAlign((prev) => ({ ...prev, [slug]: rect.left + 520 > window.innerWidth ? 'right-0' : 'left-0' }));
+    }
     setActiveMega(slug);
   };
 
@@ -143,7 +152,7 @@ export function Header() {
       <div className="sticky top-0 z-40 w-full">
 
         {/* ── Top utility bar ── */}
-        <div className="hidden lg:block w-full bg-ink text-white text-xs">
+        <div className="hidden lg:block w-full bg-ink text-white text-xs relative z-50">
           <div className="mx-auto flex max-w-[1280px] items-center justify-between px-8 py-2">
             <span className="flex items-center gap-1.5 opacity-80">
               <Icon name="local_shipping" className="!text-[14px]" />
@@ -164,7 +173,8 @@ export function Header() {
                   <Icon name="expand_more" className="!text-[12px]" />
                 </button>
                 {langOpen && (
-                  <div className="absolute right-0 top-full mt-1.5 w-36 rounded-lg border border-white/10 bg-ink shadow-xl z-[100] py-1 overflow-hidden">
+                  <div className="fixed z-[9999] w-36 rounded-lg border border-white/10 bg-ink shadow-xl py-1 overflow-hidden"
+                    style={{ top: langRef.current?.getBoundingClientRect().bottom + 6, right: window.innerWidth - langRef.current?.getBoundingClientRect().right }}>
                     {langs.map((l) => (
                       <button
                         key={l.code}
@@ -192,7 +202,8 @@ export function Header() {
                   <Icon name="expand_more" className="!text-[12px]" />
                 </button>
                 {currencyOpen && (
-                  <div className="absolute right-0 top-full mt-1.5 w-44 rounded-lg border border-white/10 bg-ink shadow-xl z-[100] py-1 overflow-hidden">
+                  <div className="fixed z-[9999] w-44 rounded-lg border border-white/10 bg-ink shadow-xl py-1 overflow-hidden"
+                    style={{ top: currencyRef.current?.getBoundingClientRect().bottom + 6, right: window.innerWidth - currencyRef.current?.getBoundingClientRect().right }}>
                     {currencies.map((c) => (
                       <button
                         key={c.code}
@@ -349,9 +360,10 @@ export function Header() {
           <nav className="hidden lg:block border-t border-border bg-surface">
             <div className="mx-auto flex max-w-[1280px] items-center px-8">
               <div className="flex items-center">
-                {categories.map((c, i) => (
+                {categories.map((c) => (
                   <div
                     key={c.slug}
+                    ref={(el) => { categoryRefs.current[c.slug] = el; }}
                     className="relative"
                     onMouseEnter={() => openMega(c.slug)}
                     onMouseLeave={closeMega}
@@ -367,7 +379,7 @@ export function Header() {
                     {/* Mega menu panel */}
                     {activeMega === c.slug && megaMenu[c.slug] && (
                       <div
-                        className={`absolute top-full z-50 rounded-b-xl border border-border bg-surface shadow-xl ${i >= categories.length - 2 ? 'right-0' : 'left-0'}`}
+                        className={`absolute top-full z-50 rounded-b-xl border border-border bg-surface shadow-xl ${megaAlign[c.slug] ?? 'left-0'}`}
                         style={{ minWidth: '520px' }}
                         onMouseEnter={() => openMega(c.slug)}
                         onMouseLeave={closeMega}
