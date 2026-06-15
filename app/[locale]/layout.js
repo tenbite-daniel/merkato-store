@@ -1,4 +1,4 @@
-import { Hanken_Grotesk } from 'next/font/google';
+import { Hanken_Grotesk, Noto_Sans_Arabic } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -11,6 +11,12 @@ import { BottomTabBar } from '@/components/BottomTabBar';
 const hanken = Hanken_Grotesk({
   variable: '--font-sans',
   subsets: ['latin'],
+});
+
+const notoArabic = Noto_Sans_Arabic({
+  variable: '--font-arabic',
+  subsets: ['arabic'],
+  weight: ['400', '700', '800'],
 });
 
 export const metadata = {
@@ -27,7 +33,7 @@ export default async function LocaleLayout({ children, params }) {
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={dir} className={`${hanken.variable} h-full antialiased`}>
+    <html lang={locale} dir={dir} className={`${hanken.variable} ${notoArabic.variable} h-full antialiased`}>
       <head>
         <link
           rel="stylesheet"
