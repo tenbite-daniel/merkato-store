@@ -2,9 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { slides } from '@/lib/slides';
+import { useTranslations, useLocale } from 'next-intl';
+
+const slideImages = [
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=80',
+  'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=2000&q=80',
+  'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=2000&q=80',
+];
+
+const slideHrefs = ['/shop/electronics', '/shop/fashion', '/shop/electronics'];
 
 export default function HeroSlider() {
+  const t = useTranslations('hero');
+  const locale = useLocale();
+  const slides = t.raw('slides');
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -12,32 +23,27 @@ export default function HeroSlider() {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const slide = slides[current];
 
   return (
     <section className="mx-auto max-w-[1280px] px-4 md:px-8 pt-6">
       <div className="relative overflow-hidden rounded-2xl">
-        {/* Images */}
-        {slides.map((s, i) => (
+        {slideImages.map((src, i) => (
           <img
             key={i}
-            src={s.image}
-            alt={s.highlight}
+            src={src}
+            alt={slides[i].highlight}
             className={`absolute inset-0 h-[420px] md:h-[520px] w-full object-cover transition-opacity duration-700 ${
               i === current ? 'opacity-100' : 'opacity-0'
             }`}
           />
         ))}
 
-        {/* Spacer to give the section height */}
         <div className="h-[420px] md:h-[520px]" />
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
 
-        {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-center gap-4 p-8 md:p-14 max-w-xl">
           <span className="self-start rounded-full bg-gold px-3 py-1 text-xs font-bold tracking-wider text-ink">
             {slide.badge}
@@ -48,7 +54,7 @@ export default function HeroSlider() {
           </h1>
           <p className="text-white/90 text-base">{slide.subtitle}</p>
           <Link
-            href={slide.href}
+            href={`/${locale}${slideHrefs[current]}`}
             className="self-start mt-2 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary-deep transition-colors"
           >
             {slide.cta}{' '}
@@ -56,7 +62,6 @@ export default function HeroSlider() {
           </Link>
         </div>
 
-        {/* Dot indicators */}
         <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
           {slides.map((_, i) => (
             <button
