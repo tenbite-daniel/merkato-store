@@ -1,0 +1,120 @@
+{
+  "topBar": {
+    "shipping": "Free shipping on orders over $100 across Africa & the Middle East",
+    "serving": "🌍 Serving Nigeria · Kenya · Ethiopia · UAE · Egypt",
+    "signIn": "Sign In"
+  },
+  "header": {
+    "searchPlaceholder": "Search for products, brands, categories…",
+    "search": "Search",
+    "suggestions": "Suggestions",
+    "seeAll": "See all results for",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "register": "Register",
+    "signIn": "Sign In",
+    "about": "About",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "deals": "Deals",
+    "viewAll": "View all",
+    "shopLabel": "Shop",
+    "promoCode": "Use code",
+    "promoSuffix": "for 10% off your first order"
+  },
+  "megaMenu": {
+    "electronics": ["Smartphones", "Laptops", "Headphones", "Cameras", "Smartwatches"],
+    "fashion": ["Bags & Leather", "Shoes", "Clothing"],
+    "groceries": ["Coffee & Tea", "Fresh Produce", "Pantry"],
+    "beauty": ["Skincare", "Haircare", "Fragrance"],
+    "household": ["Décor", "Kitchen", "Textiles"],
+    "accessories": ["Jewellery", "Wallets", "Hats & More"]
+  },
+  "categories": {
+    "electronics": "Electronics",
+    "fashion": "Fashion",
+    "groceries": "Groceries",
+    "beauty": "Beauty",
+    "household": "Household",
+    "accessories": "Accessories"
+  },
+  "promoBanner": "🎉 Huge Holiday Sale: Up to 50% off!",
+  "promoBannerCta": "Shop Now",
+  "mobileMenu": {
+    "welcome": "Welcome, guest!",
+    "signIn": "Sign In",
+    "register": "Register",
+    "shopByCategory": "Shop by Category",
+    "allCategories": "All Categories",
+    "helpSupport": "Help & Support",
+    "promoCode": "Use code",
+    "promoSuffix": "for 10% off",
+    "serving": "🌍 Serving Nigeria · Kenya · Ethiopia · UAE · Egypt",
+    "support": {
+      "about": "About Us",
+      "contact": "Contact Us",
+      "faq": "FAQ & Help",
+      "shipping": "Shipping Policy",
+      "returns": "Returns & Refunds",
+      "payment": "Payment Methods"
+    }
+  },
+  "bottomNav": {
+    "home": "Home",
+    "shop": "Shop",
+    "search": "Search",
+    "cart": "Cart",
+    "signIn": "Sign In"
+  },
+  "footer": {
+    "tagline": "Your premium gateway to global commerce with a local touch — serving Africa and the Middle East.",
+    "shop": "Shop",
+    "customerCare": "Customer Care",
+    "company": "Company",
+    "copyright": "© 2026 Merkato Store. Serving Nigeria, Kenya, Ethiopia, UAE, Saudi Arabia & Egypt.",
+    "languages": "Languages: English · العربية",
+    "links": {
+      "electronics": "Electronics",
+      "fashion": "Fashion",
+      "groceries": "Groceries",
+      "beauty": "Beauty",
+      "household": "Household",
+      "allCategories": "All Categories",
+      "contact": "Contact Us",
+      "faq": "FAQ & Help",
+      "shipping": "Shipping",
+      "returns": "Returns & Refunds",
+      "payment": "Payment Methods",
+      "about": "About Us",
+      "account": "My Account",
+      "orders": "Track Order",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  },
+  "hero": {
+    "slides": [
+      {
+        "badge": "SEASONAL SALE",
+        "title": "Discover the Essence of",
+        "highlight": "Modern Heritage",
+        "subtitle": "Experience a curated selection of premium goods, blending ancestral craftsmanship with high-tech global commerce.",
+        "cta": "Shop the Collection"
+      },
+      {
+        "badge": "NEW ARRIVALS",
+        "title": "Elevate Your Style with",
+        "highlight": "Premium Fashion",
+        "subtitle": "Explore our latest collection of handpicked fashion pieces from top designers around the globe.",
+        "cta": "Explore Fashion"
+      },
+      {
+        "badge": "TECH DEALS",
+        "title": "Power Your World with",
+        "highlight": "Cutting-Edge Tech",
+        "subtitle": "From smartphones to smart homes — discover the latest electronics at unbeatable prices.",
+        "cta": "Shop Electronics"
+      }
+    ]
+  }
+}

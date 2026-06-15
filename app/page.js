@@ -1,9 +1,5 @@
-import HeroSlider from '@/components/home/HeroSlider';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <div>
-      <HeroSlider />
-    </div>
-  );
+export default function RootPage() {
+  redirect('/en');
 }
