@@ -12,7 +12,7 @@ export function BottomTabBar() {
 
   const tabs = [
     { href: `/${locale}`, label: t('home'), icon: 'home', exact: true },
-    { href: `/${locale}/shop`, label: t('shop'), icon: 'grid_view' },
+    { href: `/${locale}/categories`, label: t('shop'), icon: 'grid_view' },
     { href: `/${locale}/search`, label: t('search'), icon: 'search' },
     { href: `/${locale}/cart`, label: t('cart'), icon: 'shopping_cart' },
     { href: `/${locale}/login`, label: t('signIn'), icon: 'login' },

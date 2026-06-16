@@ -32,6 +32,8 @@
   },
   "categories": {
     "shopByCategory": "Shop by Category",
+    "pageSubtitle": "Explore our full catalog across regions.",
+    "items": "{count} items",
     "electronics": "Electronics",
     "fashion": "Fashion & Clothing",
     "groceries": "Groceries",

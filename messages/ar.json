@@ -32,6 +32,8 @@
   },
   "categories": {
     "shopByCategory": "تسوق حسب الفئة",
+    "pageSubtitle": "استكشف الكتالوج الكامل عبر المناطق.",
+    "items": "{count} منتجات",
     "electronics": "الإلكترونيات",
     "fashion": "الموضة والملابس",
     "groceries": "البقالة",
