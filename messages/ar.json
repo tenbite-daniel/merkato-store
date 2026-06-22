@@ -167,6 +167,39 @@
       "New": "جديد"
     }
   },
+  "productDetail": {
+    "wishlist": "أضف للمفضلة",
+    "save": "وفر",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "onlyLeft": "تبقى {count} فقط",
+    "freeShipping": "شحن مجاني",
+    "securePayment": "دفع آمن",
+    "easyReturns": "إرجاع سهل",
+    "reviews": "تقييمات",
+    "customerReviews": "آراء العملاء",
+    "writeReview": "اكتب تقييماً",
+    "related": "قد يعجبك أيضاً",
+    "tabs": {
+      "description": "الوصف",
+      "details": "التفاصيل",
+      "reviews": "التقييمات"
+    },
+    "details": {
+      "sku": "الرمز",
+      "brand": "الماركة",
+      "category": "الفئة",
+      "availability": "التوفر",
+      "material": "المادة",
+      "dietary": "النظام الغذائي",
+      "skinType": "نوع البشرة"
+    },
+    "variants": {
+      "color": "اللون",
+      "size": "المقاس",
+      "weight": "الوزن"
+    }
+  },
   "hero": {
     "slides": [
       {

@@ -9,38 +9,37 @@ import { Icon } from './Icon';
 import { products, categories } from '@/lib/products';
 import { MobileMenu } from './MobileMenu';
 
-const megaMenuImages = {
+// Each mega menu item: image + the product id to link to (or null to fall back to category page)
+const megaMenuData = {
   electronics: [
-    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=300&q=80',
+    { image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=300&q=80', productId: 'nexar-pro-x-smartphone' },
+    { image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=300&q=80', productId: 'techcorp-probook-x' },
+    { image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80', productId: 'acoustic-over-ear-headphones' },
   ],
   fashion: [
-    'https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=300&q=80',
+    { image: 'https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=300&q=80', productId: 'heritage-leather-satchel' },
+    { image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80', productId: 'athletic-running-shoes' },
+    { image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=300&q=80', productId: null },
   ],
   groceries: [
-    'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=300&q=80',
+    { image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=300&q=80', productId: 'ethiopian-yirgacheffe-coffee' },
+    { image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80', productId: 'organic-dates-premium' },
+    { image: 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=300&q=80', productId: null },
   ],
   beauty: [
-    'https://images.unsplash.com/photo-1522335789203-aaa28dc4dffe?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=300&q=80',
+    { image: 'https://images.unsplash.com/photo-1522335789203-aaa28dc4dffe?auto=format&fit=crop&w=300&q=80', productId: 'african-black-soap' },
+    { image: 'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=300&q=80', productId: 'shea-butter-moisturiser' },
+    { image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=300&q=80', productId: null },
   ],
   household: [
-    'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=300&q=80',
+    { image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=300&q=80', productId: 'artisanal-ceramic-vases-set' },
+    { image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=300&q=80', productId: 'bamboo-kitchen-set' },
+    { image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=300&q=80', productId: null },
   ],
   accessories: [
-    'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1627123424574-724758594785?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=300&q=80',
+    { image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=300&q=80', productId: 'gold-statement-necklace' },
+    { image: 'https://images.unsplash.com/photo-1627123424574-724758594785?auto=format&fit=crop&w=300&q=80', productId: 'leather-minimalist-wallet' },
+    { image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=300&q=80', productId: null },
   ],
 };
 
@@ -134,14 +133,16 @@ export function Header() {
 
   // Build mega menu items from translations
   const megaMenu = Object.fromEntries(
-    Object.entries(megaMenuImages).map(([catKey, images]) => {
+    Object.entries(megaMenuData).map(([catKey, items]) => {
       const labels = t.raw(`megaMenu.${catKey}`);
       return [
         catKey,
-        labels.map((label, i) => ({
-          label,
-          slug: catKey,
-          image: images[i] ?? images[0],
+        items.slice(0, 3).map((item, i) => ({
+          label: labels[i] ?? labels[0],
+          image: item.image,
+          href: item.productId
+            ? `/${locale}/product/${item.productId}`
+            : `/${locale}/categories/${catKey}`,
         })),
       ];
     })
@@ -285,7 +286,7 @@ export function Header() {
                   {suggestions.map((p) => (
                     <Link
                       key={p.id}
-                      href={`/${locale}/p/${p.id}`}
+                      href={`/${locale}/product/${p.id}`}
                       onClick={() => { setSearchOpen(false); setQ(''); }}
                       className="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-soft transition-colors"
                     >
@@ -402,7 +403,7 @@ export function Header() {
                             {megaMenu[c.slug].slice(0, 3).map((item) => (
                               <Link
                                 key={item.label}
-                                href={`/${locale}/categories/${item.slug}`}
+                                href={item.href}
                                 onClick={() => setActiveMega(null)}
                                 className="group flex flex-col gap-2 rounded-lg overflow-hidden border border-border hover:border-primary/40 hover:shadow-sm transition-all"
                               >

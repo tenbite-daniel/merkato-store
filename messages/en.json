@@ -167,6 +167,39 @@
       "New": "New"
     }
   },
+  "productDetail": {
+    "wishlist": "Add to wishlist",
+    "save": "Save",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "onlyLeft": "Only {count} left",
+    "freeShipping": "Free Shipping",
+    "securePayment": "Secure Payment",
+    "easyReturns": "Easy Returns",
+    "reviews": "reviews",
+    "customerReviews": "Customer Reviews",
+    "writeReview": "Write a Review",
+    "related": "You May Also Like",
+    "tabs": {
+      "description": "Description",
+      "details": "Details",
+      "reviews": "Reviews"
+    },
+    "details": {
+      "sku": "SKU",
+      "brand": "Brand",
+      "category": "Category",
+      "availability": "Availability",
+      "material": "Material",
+      "dietary": "Dietary",
+      "skinType": "Skin Type"
+    },
+    "variants": {
+      "color": "Color",
+      "size": "Size",
+      "weight": "Weight"
+    }
+  },
   "hero": {
     "slides": [
       {
