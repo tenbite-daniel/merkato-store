@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -54,8 +55,8 @@ const currencies = [
 ];
 
 const langs = [
-  { code: 'en', label: 'English' },
-  { code: 'ar', label: 'العربية' },
+  { code: 'en', label: 'English', flagSrc: 'https://flagcdn.com/w20/gb.png' },
+  { code: 'ar', label: 'العربية', flagSrc: 'https://flagcdn.com/w20/sa.png' },
 ];
 
 export function Header() {
@@ -181,7 +182,7 @@ export function Header() {
                         onClick={() => switchLocale(l.code)}
                         className={`flex w-full items-center justify-between px-3 py-2 text-xs hover:bg-white/10 transition-colors ${locale === l.code ? 'text-gold font-semibold' : 'text-white/80'}`}
                       >
-                        <span>{l.label}</span>
+                        <span className="flex items-center gap-1.5"><Image src={l.flagSrc} alt={l.label} width={16} height={12} className="rounded-[2px]" /> {l.label}</span>
                         {locale === l.code && <Icon name="check" className="!text-[12px] text-gold" />}
                       </button>
                     ))}
@@ -369,7 +370,7 @@ export function Header() {
                     onMouseLeave={closeMega}
                   >
                     <Link
-                      href={`/${locale}/shop/${c.slug}`}
+                      href={`/${locale}/categories/${c.slug}`}
                       className="flex items-center gap-1 h-11 px-4 text-sm font-semibold text-foreground/75 hover:text-primary hover:bg-surface-soft transition-colors whitespace-nowrap"
                     >
                       {t(`categories.${c.slug}`)}
@@ -390,7 +391,7 @@ export function Header() {
                               {t('header.shopLabel')} {t(`categories.${c.slug}`)}
                             </span>
                             <Link
-                              href={`/${locale}/shop/${c.slug}`}
+                              href={`/${locale}/categories/${c.slug}`}
                               onClick={() => setActiveMega(null)}
                               className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
                             >
@@ -398,10 +399,10 @@ export function Header() {
                             </Link>
                           </div>
                           <div className="grid grid-cols-3 gap-3">
-                            {megaMenu[c.slug].map((item) => (
+                            {megaMenu[c.slug].slice(0, 3).map((item) => (
                               <Link
                                 key={item.label}
-                                href={`/${locale}/shop/${item.slug}`}
+                                href={`/${locale}/categories/${item.slug}`}
                                 onClick={() => setActiveMega(null)}
                                 className="group flex flex-col gap-2 rounded-lg overflow-hidden border border-border hover:border-primary/40 hover:shadow-sm transition-all"
                               >

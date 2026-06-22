@@ -73,11 +73,11 @@ export function Footer() {
         <div className="space-y-2">
           <div className="text-sm font-bold text-primary-deep">{t('shop')}</div>
           <div className="flex flex-col gap-1.5">
-            <Link href={`/${locale}/shop/electronics`} className="text-sm text-foreground/70 hover:text-primary">{t('links.electronics')}</Link>
-            <Link href={`/${locale}/shop/fashion`} className="text-sm text-foreground/70 hover:text-primary">{t('links.fashion')}</Link>
-            <Link href={`/${locale}/shop/groceries`} className="text-sm text-foreground/70 hover:text-primary">{t('links.groceries')}</Link>
-            <Link href={`/${locale}/shop/beauty`} className="text-sm text-foreground/70 hover:text-primary">{t('links.beauty')}</Link>
-            <Link href={`/${locale}/shop/household`} className="text-sm text-foreground/70 hover:text-primary">{t('links.household')}</Link>
+            <Link href={`/${locale}/categories/electronics`} className="text-sm text-foreground/70 hover:text-primary">{t('links.electronics')}</Link>
+            <Link href={`/${locale}/categories/fashion`} className="text-sm text-foreground/70 hover:text-primary">{t('links.fashion')}</Link>
+            <Link href={`/${locale}/categories/groceries`} className="text-sm text-foreground/70 hover:text-primary">{t('links.groceries')}</Link>
+            <Link href={`/${locale}/categories/beauty`} className="text-sm text-foreground/70 hover:text-primary">{t('links.beauty')}</Link>
+            <Link href={`/${locale}/categories/household`} className="text-sm text-foreground/70 hover:text-primary">{t('links.household')}</Link>
             <Link href={`/${locale}/shop`} className="text-sm text-foreground/70 hover:text-primary">{t('links.allCategories')}</Link>
           </div>
         </div>

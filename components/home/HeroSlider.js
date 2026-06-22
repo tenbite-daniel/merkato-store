@@ -11,7 +11,7 @@ const slideImages = [
   'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=2000&q=80',
 ];
 
-const slideHrefs = ['/shop/electronics', '/shop/fashion', '/shop/electronics'];
+const slideHrefs = ['/categories/electronics', '/categories/fashion', '/categories/electronics'];
 
 export default function HeroSlider() {
   const t = useTranslations('hero');

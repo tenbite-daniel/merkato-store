@@ -9,7 +9,7 @@ export default function CategoryCard({ category, className }) {
   const t = useTranslations('categories');
   return (
     <Link
-      href={`/${locale}/shop/${category.slug}`}
+      href={`/${locale}/categories/${category.slug}`}
       className={`group relative overflow-hidden rounded-xl ${className}`}
     >
       <Image

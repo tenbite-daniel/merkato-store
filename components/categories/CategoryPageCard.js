@@ -10,7 +10,7 @@ export default function CategoryPageCard({ category }) {
 
   return (
     <Link
-      href={`/${locale}/shop/${category.slug}`}
+      href={`/${locale}/categories/${category.slug}`}
       className="group relative overflow-hidden rounded-xl aspect-[4/3] block"
     >
       <Image
