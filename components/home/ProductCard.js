@@ -8,16 +8,29 @@ import { Icon } from '@/components/Icon';
 function Stars({ value, count }) {
   return (
     <div className="flex items-center gap-1">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <Icon
-          key={i}
-          name="star"
-          filled={i < Math.round(value)}
-          className="!text-[15px] text-gold"
-        />
-      ))}
+      {[1, 2, 3, 4, 5].map((i) => {
+        const diff = value - (i - 1);
+        const filled = diff >= 1;
+        const half = !filled && diff >= 0.25;
+        return (
+          <span key={i} className="relative inline-flex !text-[15px] text-gold leading-none">
+            {/* empty base */}
+            <Icon name="star" filled={false} className="!text-[15px] text-gold" />
+            {/* filled overlay (full or half) */}
+            {(filled || half) && (
+              <span
+                className="absolute inset-0 overflow-hidden"
+                style={{ width: filled ? '100%' : '50%' }}
+              >
+                <Icon name="star" filled className="!text-[15px] text-gold" />
+              </span>
+            )}
+          </span>
+        );
+      })}
+      <span className="ml-1 text-xs text-muted-foreground font-medium">{value.toFixed(1)}</span>
       {count !== undefined && (
-        <span className="ml-1 text-xs text-muted-foreground">({count})</span>
+        <span className="text-xs text-muted-foreground">({count})</span>
       )}
     </div>
   );
