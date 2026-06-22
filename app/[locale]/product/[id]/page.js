@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { use } from 'react';
 import { getProduct, products } from '@/lib/products';
+import { useWishlist } from '@/lib/useWishlist';
 import { Icon } from '@/components/Icon';
 import ProductCard from '@/components/home/ProductCard';
 import Stars from '@/components/product/Stars';
@@ -25,7 +26,8 @@ export default function ProductPage({ params }) {
   if (!product) notFound();
 
   const [qty, setQty] = useState(1);
-  const [wishlisted, setWishlisted] = useState(false);
+  const { toggle: toggleWishlist, isWishlisted } = useWishlist();
+  const wishlisted = isWishlisted(product.id);
   const [selectedColor, setSelectedColor] = useState(
     product.variants?.colors?.[0] ?? null
   );
@@ -114,7 +116,7 @@ export default function ProductPage({ params }) {
             </span>
           )}
           <button
-            onClick={() => setWishlisted((v) => !v)}
+            onClick={() => toggleWishlist(product.id)}
             className="absolute end-4 top-4 h-10 w-10 grid place-items-center rounded-full bg-surface/90 shadow hover:bg-surface transition-colors"
             aria-label={t('wishlist')}
           >
@@ -206,7 +208,7 @@ export default function ProductPage({ params }) {
             </button>
 
             <button
-              onClick={() => setWishlisted((v) => !v)}
+              onClick={() => toggleWishlist(product.id)}
               className="h-12 w-12 grid place-items-center rounded-xl border border-border hover:border-error hover:bg-red-50 transition-colors"
               aria-label={t('wishlist')}
             >
