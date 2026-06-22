@@ -1,21 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-
-function FooterCol({ title, children }) {
-  return (
-    <div className="space-y-2">
-      <div className="text-sm font-bold text-primary-deep">{title}</div>
-      <div className="flex flex-col gap-1.5">{children}</div>
-    </div>
-  );
-}
-
-function FooterLink({ href, children }) {
-  return (
-    <Link href={href} className="text-sm text-foreground/70 hover:text-primary">
-      {children}
-    </Link>
-  );
-}
+import { useTranslations, useLocale } from 'next-intl';
 
 const socialLinks = [
   {
@@ -58,62 +44,71 @@ const socialLinks = [
   },
 ];
 
-function Social({ name, href, svg }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={name}
-      className="grid h-9 w-9 place-items-center rounded-full border border-border bg-surface text-foreground/70 hover:text-primary cursor-pointer"
-    >
-      {svg}
-    </a>
-  );
-}
-
 export function Footer() {
+  const t = useTranslations('footer');
+  const locale = useLocale();
+
   return (
     <footer className="mt-auto w-full border-t border-border bg-muted/60">
       <div className="mx-auto grid w-full max-w-[1280px] grid-cols-2 gap-8 px-4 py-10 md:grid-cols-4 md:px-8">
         <div className="col-span-2 md:col-span-1 space-y-3">
           <div className="text-xl font-extrabold text-primary-deep">Merkato Store</div>
-          <p className="text-sm text-muted-foreground">
-            Your premium gateway to global commerce with a local touch — serving Africa and the Middle East.
-          </p>
+          <p className="text-sm text-muted-foreground">{t('tagline')}</p>
           <div className="flex gap-2 pt-2">
             {socialLinks.map((s) => (
-              <Social key={s.name} {...s} />
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.name}
+                className="grid h-9 w-9 place-items-center rounded-full border border-border bg-surface text-foreground/70 hover:text-primary cursor-pointer"
+              >
+                {s.svg}
+              </a>
             ))}
           </div>
         </div>
-        <FooterCol title="Shop">
-          <FooterLink href="/shop/electronics">Electronics</FooterLink>
-          <FooterLink href="/shop/fashion">Fashion</FooterLink>
-          <FooterLink href="/shop/groceries">Groceries</FooterLink>
-          <FooterLink href="/shop/beauty">Beauty</FooterLink>
-          <FooterLink href="/shop/household">Household</FooterLink>
-          <FooterLink href="/shop">All Categories</FooterLink>
-        </FooterCol>
-        <FooterCol title="Customer Care">
-          <FooterLink href="/contact">Contact Us</FooterLink>
-          <FooterLink href="/faq">FAQ &amp; Help</FooterLink>
-          <FooterLink href="/shipping-policy">Shipping</FooterLink>
-          <FooterLink href="/returns">Returns &amp; Refunds</FooterLink>
-          <FooterLink href="/payment-methods">Payment Methods</FooterLink>
-        </FooterCol>
-        <FooterCol title="Company">
-          <FooterLink href="/about">About Us</FooterLink>
-          <FooterLink href="/account">My Account</FooterLink>
-          <FooterLink href="/account/orders">Track Order</FooterLink>
-          <FooterLink href="/privacy">Privacy Policy</FooterLink>
-          <FooterLink href="/terms">Terms of Service</FooterLink>
-        </FooterCol>
+
+        <div className="space-y-2">
+          <div className="text-sm font-bold text-primary-deep">{t('shop')}</div>
+          <div className="flex flex-col gap-1.5">
+            <Link href={`/${locale}/shop/electronics`} className="text-sm text-foreground/70 hover:text-primary">{t('links.electronics')}</Link>
+            <Link href={`/${locale}/shop/fashion`} className="text-sm text-foreground/70 hover:text-primary">{t('links.fashion')}</Link>
+            <Link href={`/${locale}/shop/groceries`} className="text-sm text-foreground/70 hover:text-primary">{t('links.groceries')}</Link>
+            <Link href={`/${locale}/shop/beauty`} className="text-sm text-foreground/70 hover:text-primary">{t('links.beauty')}</Link>
+            <Link href={`/${locale}/shop/household`} className="text-sm text-foreground/70 hover:text-primary">{t('links.household')}</Link>
+            <Link href={`/${locale}/shop`} className="text-sm text-foreground/70 hover:text-primary">{t('links.allCategories')}</Link>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <div className="text-sm font-bold text-primary-deep">{t('customerCare')}</div>
+          <div className="flex flex-col gap-1.5">
+            <Link href={`/${locale}/contact`} className="text-sm text-foreground/70 hover:text-primary">{t('links.contact')}</Link>
+            <Link href={`/${locale}/faq`} className="text-sm text-foreground/70 hover:text-primary">{t('links.faq')}</Link>
+            <Link href={`/${locale}/shipping-policy`} className="text-sm text-foreground/70 hover:text-primary">{t('links.shipping')}</Link>
+            <Link href={`/${locale}/returns`} className="text-sm text-foreground/70 hover:text-primary">{t('links.returns')}</Link>
+            <Link href={`/${locale}/payment-methods`} className="text-sm text-foreground/70 hover:text-primary">{t('links.payment')}</Link>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <div className="text-sm font-bold text-primary-deep">{t('company')}</div>
+          <div className="flex flex-col gap-1.5">
+            <Link href={`/${locale}/about`} className="text-sm text-foreground/70 hover:text-primary">{t('links.about')}</Link>
+            <Link href={`/${locale}/account`} className="text-sm text-foreground/70 hover:text-primary">{t('links.account')}</Link>
+            <Link href={`/${locale}/account/orders`} className="text-sm text-foreground/70 hover:text-primary">{t('links.orders')}</Link>
+            <Link href={`/${locale}/privacy`} className="text-sm text-foreground/70 hover:text-primary">{t('links.privacy')}</Link>
+            <Link href={`/${locale}/terms`} className="text-sm text-foreground/70 hover:text-primary">{t('links.terms')}</Link>
+          </div>
+        </div>
       </div>
+
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-[1280px] flex-col md:flex-row items-center justify-between gap-2 px-4 md:px-8 py-4 pb-24 md:pb-4 text-xs text-muted-foreground">
-          <span>© 2026 Merkato Store. Serving Nigeria, Kenya, Ethiopia, UAE, Saudi Arabia &amp; Egypt.</span>
-          <span>Languages: English · العربية</span>
+          <span>{t('copyright')}</span>
+          <span>{t('languages')}</span>
         </div>
       </div>
     </footer>

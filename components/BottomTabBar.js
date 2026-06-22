@@ -2,24 +2,27 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
 import { Icon } from './Icon';
 
-const tabs = [
-  { href: '/', label: 'Home', icon: 'home', exact: true },
-  { href: '/shop', label: 'Shop', icon: 'grid_view' },
-  { href: '/search', label: 'Search', icon: 'search' },
-  { href: '/cart', label: 'Cart', icon: 'shopping_cart' },
-  { href: '/login', label: 'Sign In', icon: 'login' },
-];
-
 export function BottomTabBar() {
+  const t = useTranslations('bottomNav');
+  const locale = useLocale();
   const pathname = usePathname();
+
+  const tabs = [
+    { href: `/${locale}`, label: t('home'), icon: 'home', exact: true },
+    { href: `/${locale}/shop`, label: t('shop'), icon: 'grid_view' },
+    { href: `/${locale}/search`, label: t('search'), icon: 'search' },
+    { href: `/${locale}/cart`, label: t('cart'), icon: 'shopping_cart' },
+    { href: `/${locale}/login`, label: t('signIn'), icon: 'login' },
+  ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-surface border-t border-border shadow-[0_-4px_12px_rgba(0,0,0,0.08)] pb-[env(safe-area-inset-bottom)]">
       <ul className="flex items-stretch">
         {tabs.map((tab) => {
-          const isActive = tab.exact ? pathname === tab.href : pathname.startsWith(tab.href) && tab.href !== '/';
+          const isActive = tab.exact ? pathname === tab.href : pathname.startsWith(tab.href) && tab.href !== `/${locale}`;
           return (
             <li key={tab.href} className="flex-1">
               <Link

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { Icon } from './Icon';
 import { categories } from '@/lib/products';
 
@@ -23,16 +24,10 @@ const categoryColors = {
   accessories: 'bg-rose-50 text-rose-600',
 };
 
-const SUPPORT = [
-  { href: '/about', label: 'About Us', icon: 'info' },
-  { href: '/contact', label: 'Contact Us', icon: 'mail' },
-  { href: '/faq', label: 'FAQ & Help', icon: 'help' },
-  { href: '/shipping-policy', label: 'Shipping Policy', icon: 'local_shipping' },
-  { href: '/returns', label: 'Returns & Refunds', icon: 'assignment_return' },
-  { href: '/payment-methods', label: 'Payment Methods', icon: 'credit_card' },
-];
-
 export function MobileMenu({ open, onClose }) {
+  const t = useTranslations('mobileMenu');
+  const tCat = useTranslations('categories');
+  const locale = useLocale();
   const [shopExpanded, setShopExpanded] = useState(true);
   const [supportExpanded, setSupportExpanded] = useState(false);
 
@@ -44,6 +39,15 @@ export function MobileMenu({ open, onClose }) {
 
   if (!open) return null;
 
+  const support = [
+    { href: `/${locale}/about`, label: t('support.about'), icon: 'info' },
+    { href: `/${locale}/contact`, label: t('support.contact'), icon: 'mail' },
+    { href: `/${locale}/faq`, label: t('support.faq'), icon: 'help' },
+    { href: `/${locale}/shipping-policy`, label: t('support.shipping'), icon: 'local_shipping' },
+    { href: `/${locale}/returns`, label: t('support.returns'), icon: 'assignment_return' },
+    { href: `/${locale}/payment-methods`, label: t('support.payment'), icon: 'credit_card' },
+  ];
+
   return (
     <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true">
       {/* Backdrop */}
@@ -54,7 +58,7 @@ export function MobileMenu({ open, onClose }) {
 
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-border bg-primary text-white shrink-0">
-          <Link href="/" onClick={onClose} className="flex items-center gap-2">
+          <Link href={`/${locale}`} onClick={onClose} className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-white/20 grid place-items-center font-extrabold text-sm">M</div>
             <span className="text-lg font-extrabold tracking-tight">
               Merkato<span className="opacity-70">.</span>
@@ -72,13 +76,13 @@ export function MobileMenu({ open, onClose }) {
         {/* Guest banner */}
         <div className="flex items-center gap-2 px-4 py-3 bg-surface-soft border-b border-border shrink-0">
           <Icon name="person_outline" className="text-muted-foreground" />
-          <span className="text-sm text-muted-foreground">Welcome, guest!</span>
+          <span className="text-sm text-muted-foreground">{t('welcome')}</span>
           <div className="ml-auto flex gap-2">
-            <Link href="/login" onClick={onClose} className="rounded-lg border border-primary px-3 py-1.5 text-xs font-semibold text-primary">
-              Sign In
+            <Link href={`/${locale}/login`} onClick={onClose} className="rounded-lg border border-primary px-3 py-1.5 text-xs font-semibold text-primary">
+              {t('signIn')}
             </Link>
-            <Link href="/register" onClick={onClose} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">
-              Register
+            <Link href={`/${locale}/register`} onClick={onClose} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">
+              {t('register')}
             </Link>
           </div>
         </div>
@@ -92,7 +96,7 @@ export function MobileMenu({ open, onClose }) {
               onClick={() => setShopExpanded((v) => !v)}
               className="flex w-full items-center justify-between px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-muted-foreground hover:bg-surface-soft transition-colors"
             >
-              <span>Shop by Category</span>
+              <span>{t('shopByCategory')}</span>
               <Icon name={shopExpanded ? 'expand_less' : 'expand_more'} className="!text-[18px]" />
             </button>
             {shopExpanded && (
@@ -100,22 +104,22 @@ export function MobileMenu({ open, onClose }) {
                 {categories.map((c) => (
                   <Link
                     key={c.slug}
-                    href={`/shop/${c.slug}`}
+                    href={`/${locale}/shop/${c.slug}`}
                     onClick={onClose}
                     className="flex items-center gap-2.5 rounded-xl border border-border bg-surface px-3 py-2.5 hover:border-primary/40 hover:bg-accent transition-colors"
                   >
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-sm ${categoryColors[c.slug] ?? 'bg-surface-soft text-foreground'}`}>
                       <Icon name={categoryIcons[c.slug] ?? 'category'} className="!text-[18px]" />
                     </span>
-                    <span className="text-xs font-semibold text-ink leading-tight">{c.name}</span>
+                    <span className="text-xs font-semibold text-ink leading-tight">{tCat(c.slug)}</span>
                   </Link>
                 ))}
                 <Link
-                  href="/shop"
+                  href={`/${locale}/shop`}
                   onClick={onClose}
                   className="col-span-2 flex items-center justify-center gap-2 rounded-xl border border-dashed border-primary/40 py-2.5 text-xs font-semibold text-primary hover:bg-accent transition-colors"
                 >
-                  <Icon name="grid_view" className="!text-[16px]" /> All Categories
+                  <Icon name="grid_view" className="!text-[16px]" /> {t('allCategories')}
                 </Link>
               </div>
             )}
@@ -129,11 +133,11 @@ export function MobileMenu({ open, onClose }) {
               onClick={() => setSupportExpanded((v) => !v)}
               className="flex w-full items-center justify-between px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-muted-foreground hover:bg-surface-soft transition-colors"
             >
-              <span>Help & Support</span>
+              <span>{t('helpSupport')}</span>
               <Icon name={supportExpanded ? 'expand_less' : 'expand_more'} className="!text-[18px]" />
             </button>
             {supportExpanded &&
-              SUPPORT.map((it) => (
+              support.map((it) => (
                 <Link
                   key={it.href}
                   href={it.href}
@@ -151,7 +155,7 @@ export function MobileMenu({ open, onClose }) {
             <div className="flex items-center gap-2 text-xs">
               <Icon name="local_offer" className="!text-[16px] text-primary" />
               <span className="text-ink">
-                Use code <strong className="text-primary">MERKATO10</strong> for 10% off
+                {t('promoCode')} <strong className="text-primary">MERKATO10</strong> {t('promoSuffix')}
               </span>
             </div>
           </div>
@@ -160,7 +164,7 @@ export function MobileMenu({ open, onClose }) {
         {/* Footer */}
         <div className="shrink-0 border-t border-border px-4 py-3 bg-surface-soft">
           <div className="text-center text-xs text-muted-foreground">
-            🌍 Serving Nigeria · Kenya · Ethiopia · UAE · Egypt
+            {t('serving')}
           </div>
         </div>
       </div>
