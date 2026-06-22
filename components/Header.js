@@ -9,6 +9,7 @@ import { Icon } from './Icon';
 import { products, categories } from '@/lib/products';
 import { MobileMenu } from './MobileMenu';
 import { useWishlist } from '@/lib/useWishlist';
+import { useCart } from '@/lib/useCart';
 
 // Each mega menu item: image + the product id to link to (or null to fall back to category page)
 const megaMenuData = {
@@ -74,6 +75,7 @@ export function Header() {
   const [currencyOpen, setCurrencyOpen] = useState(false);
 
   const { wishlist } = useWishlist();
+  const { totalItems: cartCount } = useCart();
 
   const searchRef = useRef(null);
   const langRef = useRef(null);
@@ -326,7 +328,7 @@ export function Header() {
               {/* Wishlist */}
               <Link
                 href={`/${locale}/account/wishlist`}
-                className="relative hidden md:flex flex-col items-center justify-center h-12 w-12 rounded-xl hover:bg-surface-soft text-foreground/70 hover:text-primary transition-colors"
+                className="relative flex flex-col items-center justify-center h-12 w-12 rounded-xl hover:bg-surface-soft text-foreground/70 hover:text-primary transition-colors"
                 aria-label={t('header.wishlist')}
               >
                 <Icon name="favorite" className="!text-[22px]" />
@@ -345,6 +347,11 @@ export function Header() {
                 aria-label={t('header.cart')}
               >
                 <Icon name="shopping_cart" className="!text-[22px]" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-primary text-white text-[10px] font-bold px-1 leading-none">
+                    {cartCount > 99 ? '99+' : cartCount}
+                  </span>
+                )}
                 <span className="text-[9px] font-semibold mt-0.5 leading-none hidden md:block">{t('header.cart')}</span>
               </Link>
 
