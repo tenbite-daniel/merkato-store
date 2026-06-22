@@ -8,6 +8,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { use } from 'react';
 import { getProduct, products } from '@/lib/products';
 import { useWishlist } from '@/lib/useWishlist';
+import { useCart } from '@/lib/useCart';
 import { Icon } from '@/components/Icon';
 import ProductCard from '@/components/home/ProductCard';
 import Stars from '@/components/product/Stars';
@@ -27,6 +28,7 @@ export default function ProductPage({ params }) {
 
   const [qty, setQty] = useState(1);
   const { toggle: toggleWishlist, isWishlisted } = useWishlist();
+  const { addToCart } = useCart();
   const wishlisted = isWishlisted(product.id);
   const [selectedColor, setSelectedColor] = useState(
     product.variants?.colors?.[0] ?? null
@@ -58,6 +60,18 @@ export default function ProductPage({ params }) {
     ].filter((s) => s != null);
     return candidates.length ? Math.min(...candidates) : product.stock;
   }, [selectedColor, selectedSize, selectedWeight, product.stock]);
+
+  const variantLabel = [
+    selectedColor?.label,
+    selectedSize?.label && `Size: ${selectedSize.label}`,
+    selectedWeight?.label,
+  ].filter(Boolean).join(' · ') || null;
+
+  const variantKey = [
+    selectedColor?.label ?? '',
+    selectedSize?.label ?? '',
+    selectedWeight?.label ?? '',
+  ].join('|');
 
   const related = products
     .filter((p) => p.categorySlug === product.categorySlug && p.id !== product.id)
@@ -200,6 +214,15 @@ export default function ProductPage({ params }) {
             </div>
 
             <button
+              onClick={() => addToCart({
+                id: product.id,
+                name: product.name,
+                image: product.image,
+                price: activePrice,
+                qty,
+                variantKey,
+                variantLabel,
+              })}
               className="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:bg-primary-deep transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={activeStock === 0}
             >
