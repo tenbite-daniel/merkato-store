@@ -59,7 +59,7 @@ export default function ProductCard({ product }) {
 
   return (
     <Link
-      href={`/${locale}/p/${product.id}`}
+      href={`/${locale}/product/${product.id}`}
       className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-shadow hover:shadow-md"
     >
       <div className="relative aspect-square overflow-hidden bg-surface-soft">
