@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 import { Icon } from './Icon';
 import { categories } from '@/lib/products';
 
@@ -24,12 +26,39 @@ const categoryColors = {
   accessories: 'bg-rose-50 text-rose-600',
 };
 
+const langs = [
+  { code: 'en', label: 'English', flagSrc: 'https://flagcdn.com/w20/gb.png' },
+  { code: 'ar', label: 'العربية', flagSrc: 'https://flagcdn.com/w20/sa.png' },
+];
+
+const currencies = [
+  { code: 'USD', symbol: '$', label: 'US Dollar' },
+  { code: 'NGN', symbol: '₦', label: 'Nigerian Naira' },
+  { code: 'KES', symbol: 'KSh', label: 'Kenyan Shilling' },
+  { code: 'ETB', symbol: 'Br', label: 'Ethiopian Birr' },
+  { code: 'AED', symbol: 'د.إ', label: 'UAE Dirham' },
+  { code: 'SAR', symbol: 'ر.س', label: 'Saudi Riyal' },
+  { code: 'EGP', symbol: 'E£', label: 'Egyptian Pound' },
+];
+
 export function MobileMenu({ open, onClose }) {
   const t = useTranslations('mobileMenu');
   const tCat = useTranslations('categories');
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [shopExpanded, setShopExpanded] = useState(true);
   const [supportExpanded, setSupportExpanded] = useState(false);
+  const [currency, setCurrency] = useState('USD');
+  const [langOpen, setLangOpen] = useState(false);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
+
+  const switchLocale = (newLocale) => {
+    setLangOpen(false);
+    const segments = pathname.split('/');
+    segments[1] = newLocale;
+    router.push(segments.join('/') || '/');
+  };
 
   useEffect(() => {
     if (open) document.body.style.overflow = 'hidden';
@@ -104,7 +133,7 @@ export function MobileMenu({ open, onClose }) {
                 {categories.map((c) => (
                   <Link
                     key={c.slug}
-                    href={`/${locale}/shop/${c.slug}`}
+                    href={`/${locale}/categories/${c.slug}`}
                     onClick={onClose}
                     className="flex items-center gap-2.5 rounded-xl border border-border bg-surface px-3 py-2.5 hover:border-primary/40 hover:bg-accent transition-colors"
                   >
@@ -158,6 +187,63 @@ export function MobileMenu({ open, onClose }) {
                 {t('promoCode')} <strong className="text-primary">MERKATO10</strong> {t('promoSuffix')}
               </span>
             </div>
+          </div>
+
+          {/* Language & Currency */}
+          <div className="mx-3 mb-3 rounded-xl border border-border overflow-hidden">
+            {/* Language */}
+            <button
+              onClick={() => { setLangOpen((v) => !v); setCurrencyOpen(false); }}
+              className="flex w-full items-center justify-between px-4 py-3 text-sm font-medium hover:bg-surface-soft transition-colors"
+            >
+              <span className="flex items-center gap-2 text-foreground/80">
+                <Icon name="language" className="!text-[18px] text-muted-foreground" />
+                Language — <strong>{locale.toUpperCase()}</strong>
+              </span>
+              <Icon name={langOpen ? 'expand_less' : 'expand_more'} className="!text-[18px] text-muted-foreground" />
+            </button>
+            {langOpen && (
+              <div className="border-t border-border">
+                {langs.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => switchLocale(l.code)}
+                    className={`flex w-full items-center justify-between px-6 py-2.5 text-sm hover:bg-surface-soft transition-colors ${locale === l.code ? 'text-primary font-semibold' : 'text-foreground/70'}`}
+                  >
+                    <span className="flex items-center gap-1.5"><Image src={l.flagSrc} alt={l.label} width={16} height={12} className="rounded-[2px]" /> {l.label}</span>
+                    {locale === l.code && <Icon name="check" className="!text-[14px] text-primary" />}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div className="h-px bg-border" />
+
+            {/* Currency */}
+            <button
+              onClick={() => { setCurrencyOpen((v) => !v); setLangOpen(false); }}
+              className="flex w-full items-center justify-between px-4 py-3 text-sm font-medium hover:bg-surface-soft transition-colors"
+            >
+              <span className="flex items-center gap-2 text-foreground/80">
+                <Icon name="attach_money" className="!text-[18px] text-muted-foreground" />
+                Currency — <strong>{currency}</strong>
+              </span>
+              <Icon name={currencyOpen ? 'expand_less' : 'expand_more'} className="!text-[18px] text-muted-foreground" />
+            </button>
+            {currencyOpen && (
+              <div className="border-t border-border">
+                {currencies.map((c) => (
+                  <button
+                    key={c.code}
+                    onClick={() => { setCurrency(c.code); setCurrencyOpen(false); }}
+                    className={`flex w-full items-center justify-between px-6 py-2.5 text-sm hover:bg-surface-soft transition-colors ${currency === c.code ? 'text-primary font-semibold' : 'text-foreground/70'}`}
+                  >
+                    <span>{c.symbol} {c.label}</span>
+                    {currency === c.code && <Icon name="check" className="!text-[14px] text-primary" />}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
