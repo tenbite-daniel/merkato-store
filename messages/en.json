@@ -101,6 +101,46 @@
       "terms": "Terms of Service"
     }
   },
+  "categoryFilters": {
+    "filters": "Filters",
+    "clearAll": "Clear all",
+    "clearFilters": "Clear filters",
+    "priceRange": "Price Range",
+    "brand": "Brand",
+    "sortBy": "Sort by:",
+    "product": "product",
+    "products": "products",
+    "noProducts": "No products match your filters.",
+    "showResults": "Show {count} results",
+    "customerRating": "Customer Rating",
+    "popularity": "Popularity",
+    "priceAsc": "Price: Low to High",
+    "priceDesc": "Price: High to Low",
+    "topRated": "Top Rated",
+    "newArrivals": "New Arrivals",
+    "extraFilters": {
+      "features": {
+        "label": "Features",
+        "options": ["Noise Cancellation", "Bluetooth", "Fast Charging", "Waterproof"]
+      },
+      "material": {
+        "label": "Material",
+        "options": ["Leather", "Mesh", "Denim", "Cotton", "Ceramic", "Bamboo", "Wood", "Metal"]
+      },
+      "dietary": {
+        "label": "Dietary",
+        "options": ["Organic", "No Added Sugar", "Gluten Free", "Vegan"]
+      },
+      "skinType": {
+        "label": "Skin Type",
+        "options": ["All Skin Types", "Dry", "Oily", "Sensitive"]
+      },
+      "type": {
+        "label": "Type",
+        "options": ["Jewellery", "Wallets", "Bags", "Watches"]
+      }
+    }
+  },
   "products": {
     "featured": "Featured Products",
     "bestSellers": "Best Sellers",
