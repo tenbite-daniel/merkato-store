@@ -8,6 +8,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Icon } from './Icon';
 import { products, categories } from '@/lib/products';
 import { MobileMenu } from './MobileMenu';
+import { useWishlist } from '@/lib/useWishlist';
 
 // Each mega menu item: image + the product id to link to (or null to fall back to category page)
 const megaMenuData = {
@@ -71,6 +72,8 @@ export function Header() {
   const [currency, setCurrency] = useState('USD');
   const [langOpen, setLangOpen] = useState(false);
   const [currencyOpen, setCurrencyOpen] = useState(false);
+
+  const { wishlist } = useWishlist();
 
   const searchRef = useRef(null);
   const langRef = useRef(null);
@@ -327,6 +330,11 @@ export function Header() {
                 aria-label={t('header.wishlist')}
               >
                 <Icon name="favorite" className="!text-[22px]" />
+                {wishlist.length > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-primary text-white text-[10px] font-bold px-1 leading-none">
+                    {wishlist.length > 99 ? '99+' : wishlist.length}
+                  </span>
+                )}
                 <span className="text-[9px] font-semibold mt-0.5 leading-none">{t('header.wishlist')}</span>
               </Link>
 

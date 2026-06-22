@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { Icon } from '@/components/Icon';
+import { useWishlist } from '@/lib/useWishlist';
 
 function Stars({ value, count }) {
   return (
@@ -40,6 +41,8 @@ export default function ProductCard({ product }) {
   const locale = useLocale();
   const t = useTranslations('products');
   const td = useTranslations('productData');
+  const { toggle, isWishlisted } = useWishlist();
+  const wishlisted = isWishlisted(product.id);
 
   const badgeStyle =
     product.badge === 'Best Seller'
@@ -58,11 +61,8 @@ export default function ProductCard({ product }) {
   const productName = td(product.id);
 
   return (
-    <Link
-      href={`/${locale}/product/${product.id}`}
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-shadow hover:shadow-md"
-    >
-      <div className="relative aspect-square overflow-hidden bg-surface-soft">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-shadow hover:shadow-md">
+      <Link href={`/${locale}/product/${product.id}`} className="relative aspect-square overflow-hidden bg-surface-soft block">
         <Image
           src={product.image}
           alt={productName}
@@ -75,8 +75,15 @@ export default function ProductCard({ product }) {
             {badgeLabel}
           </span>
         )}
-      </div>
-      <div className="flex flex-1 flex-col gap-2 p-4">
+        <button
+          onClick={(e) => { e.preventDefault(); toggle(product.id); }}
+          className="absolute end-2 top-2 h-8 w-8 grid place-items-center rounded-full bg-surface/90 shadow hover:bg-surface transition-colors"
+          aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+        >
+          <Icon name="favorite" filled={wishlisted} className={`!text-[16px] ${wishlisted ? 'text-error' : 'text-muted-foreground'}`} />
+        </button>
+      </Link>
+      <Link href={`/${locale}/product/${product.id}`} className="flex flex-1 flex-col gap-2 p-4">
         <h3 className="text-sm font-semibold text-ink line-clamp-2">{productName}</h3>
         <Stars value={product.rating} count={product.reviews} />
         <div className="mt-auto flex items-end justify-between pt-2">
@@ -90,7 +97,7 @@ export default function ProductCard({ product }) {
             <Icon name="add_shopping_cart" className="!text-[18px]" />
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
