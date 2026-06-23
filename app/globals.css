@@ -83,3 +83,15 @@
     vertical-align: middle;
   }
 }
+
+/* Keep account sidebar always on the left regardless of locale direction */
+[dir="rtl"] .account-layout {
+  direction: ltr;
+}
+[dir="rtl"] .account-layout > * {
+  direction: rtl;
+}
+
+/* Hide scrollbar on account mobile nav */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
