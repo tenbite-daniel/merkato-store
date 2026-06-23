@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { Icon } from './Icon';
+import { useCart } from '@/lib/useCart';
 
 export function BottomTabBar() {
   const t = useTranslations('bottomNav');
   const locale = useLocale();
   const pathname = usePathname();
+  const { totalItems } = useCart();
 
   const tabs = [
     { href: `/${locale}`, label: t('home'), icon: 'home', exact: true },
@@ -39,6 +41,11 @@ export function BottomTabBar() {
                   filled={isActive}
                   className={`!text-[24px] transition-transform ${isActive ? 'scale-110' : ''}`}
                 />
+                {tab.icon === 'shopping_cart' && totalItems > 0 && (
+                  <span className="absolute top-1 left-1/2 translate-x-1 -translate-y-0.5 min-w-[16px] h-4 px-1 rounded-full bg-primary text-white text-[9px] font-bold flex items-center justify-center leading-none">
+                    {totalItems > 99 ? '99+' : totalItems}
+                  </span>
+                )}
                 <span className={`leading-none transition-colors ${isActive ? 'text-primary' : 'text-foreground/50'}`}>
                   {tab.label}
                 </span>
