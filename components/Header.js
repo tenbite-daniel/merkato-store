@@ -455,7 +455,7 @@ export function Header() {
                 <Link href={`/${locale}/about`} className="font-medium text-foreground/70 hover:text-primary transition-colors whitespace-nowrap">{t('header.about')}</Link>
                 <Link href={`/${locale}/contact`} className="font-medium text-foreground/70 hover:text-primary transition-colors whitespace-nowrap">{t('header.contact')}</Link>
                 <Link href={`/${locale}/faq`} className="font-medium text-foreground/70 hover:text-primary transition-colors whitespace-nowrap">{t('header.faq')}</Link>
-                <Link href={`/${locale}/search`} className="flex items-center gap-1.5 rounded-full border border-primary/30 px-3 py-1.5 text-xs font-semibold text-primary hover:bg-accent transition-colors whitespace-nowrap">
+                <Link href={`/${locale}/deals`} className="flex items-center gap-1.5 rounded-full border border-primary/30 px-3 py-1.5 text-xs font-semibold text-primary hover:bg-accent transition-colors whitespace-nowrap">
                   <Icon name="local_offer" className="!text-[14px]" /> {t('header.deals')}
                 </Link>
               </div>

@@ -200,6 +200,24 @@
       "weight": "الوزن"
     }
   },
+  "deals": {
+    "title": "العروض والخصومات",
+    "bannerLabel": "لفترة محدودة فقط",
+    "bannerTitle": "وفّر أكثر",
+    "bannerHighlight": "خصومات تصل إلى 50%",
+    "bannerSubtitle": "اغتنم أفضل العروض قبل نفادها.",
+    "bannerCta": "تسوق جميع العروض",
+    "itemsOnSale": "منتج بتخفيض",
+    "noDeals": "لا توجد عروض متاحة الآن. تابعنا قريباً!",
+    "filterCategory": "الفئة",
+    "filterPrice": "نطاق السعر",
+    "sortBy": "ترتيب حسب:",
+    "sortDefault": "الأكثر شعبية",
+    "priceAsc": "السعر: من الأقل إلى الأعلى",
+    "priceDesc": "السعر: من الأعلى إلى الأقل",
+    "topRated": "الأعلى تقييماً",
+    "clearAll": "مسح الكل"
+  },
   "hero": {
     "slides": [
       {

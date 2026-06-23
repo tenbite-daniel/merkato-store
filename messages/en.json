@@ -200,6 +200,24 @@
       "weight": "Weight"
     }
   },
+  "deals": {
+    "title": "Deals & Offers",
+    "bannerLabel": "Limited Time Only",
+    "bannerTitle": "Huge Savings",
+    "bannerHighlight": "Up to 50% Off",
+    "bannerSubtitle": "Grab the best deals before they're gone.",
+    "bannerCta": "Shop All Deals",
+    "itemsOnSale": "items on sale",
+    "noDeals": "No deals available right now. Check back soon!",
+    "filterCategory": "Category",
+    "filterPrice": "Price Range",
+    "sortBy": "Sort by:",
+    "sortDefault": "Popularity",
+    "priceAsc": "Price: Low to High",
+    "priceDesc": "Price: High to Low",
+    "topRated": "Top Rated",
+    "clearAll": "Clear all"
+  },
   "hero": {
     "slides": [
       {
